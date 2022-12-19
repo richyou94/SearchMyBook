@@ -52,7 +52,7 @@ export const DELETE_BOOK = gql`
         bookId
         authors
         image
-        descfription
+        description
         title
         link
       }

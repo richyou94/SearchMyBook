@@ -56,12 +56,12 @@ const SavedBooks = () => {
     if (!token) {
       return false;
     }
-    console.log(bookId)
+    
     try {
       const { data } = await deleteBook({
         variables: { bookId },
       });
-
+console.log(data)
       // if (!response.ok) {
       //   throw new Error('something went wrong!');
       // }
@@ -72,6 +72,7 @@ const SavedBooks = () => {
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
+      // console.log('error?')
     }
   };
 
