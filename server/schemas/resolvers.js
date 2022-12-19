@@ -36,6 +36,18 @@ const resolvers = {
         console.log("login error", err);
       }
     },
+    addBook: async (parent, { bookData }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          {
+            _id: context.user._id,
+          },
+          { $addToSet: { savedBooks: { bookData } } },
+          { new: true, runValidators: true }
+        );
+        return updatedUser;
+      }
+    },
   },
 };
 
