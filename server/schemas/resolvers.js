@@ -42,11 +42,12 @@ const resolvers = {
           {
             _id: context.user._id,
           },
-          { $addToSet: { savedBooks: { bookData } } },
-          { new: true, runValidators: true }
+          { $addToSet: { savedBooks: bookData } },
+          { new: true }
         );
         return updatedUser;
       }
+      throw new AuthenticationError("you need to log in");
     },
     deleteBook: async (parent, { bookId }, context) => {
       if (context.user) {
